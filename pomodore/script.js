@@ -11,14 +11,12 @@ const shortBtn = document.querySelector("#short_break");
 const longBtn = document.querySelector("#long_break");
 
 const sessionValue = document.querySelector("#session-value");
-const updateSessions = () => {
-  console.log(sessionCounter);
+const updateSessions = async () => {
+  const currentValue = await getSessions();
 
-  const newCount = getSessions()++;
-  console.log(newCount);
+  const newCount = parseInt(currentValue) + 1;
 
   localStorage.setItem("sessions", newCount);
-  console.log(newCount);
 
   sessionValue.textContent = newCount;
 };
@@ -80,28 +78,22 @@ const activeTimer = (minutes) => {
   clearInterval(runningTime);
   currentTime = timeToMills(minutes);
   timer.textContent = String(minutes).padStart(2, "0") + ":00";
-  console.log("activamos", isPaused);
   changeActiveStatus();
 };
 
 const play = () => {
   if (isPaused) {
-    console.log(isPaused);
     isPaused = false;
     setTimer(currentTime);
-    console.log("play", isPaused);
     changeActiveStatus();
   } else {
-    console.log(isPaused);
     isPaused = true;
     clearInterval(runningTime);
-    console.log("pausa", isPaused);
     changeActiveStatus();
   }
 };
 
 const reset = () => {
-  console.log("resetTimer ");
   isPaused = true;
   clearInterval(runningTime);
   currentTime = timeToMills(25);
@@ -114,7 +106,7 @@ shortBtn.addEventListener("click", () => activeTimer(5));
 longBtn.addEventListener("click", () => activeTimer(15));
 
 const testBtn = document.querySelector("#test");
-testBtn.addEventListener("click", () => activeTimer(0.166667));
+testBtn.addEventListener("click", () => activeTimer(0.0666667));
 
 playBtn.addEventListener("click", play);
 resetBtn.addEventListener("click", reset);
