@@ -18,11 +18,11 @@ const setTimer = (timeToCount) => {
   changeActiveStatus();
 
   let newTimeInSec = timeToCount;
-  if (newTimeInSec === 0) {
-    clearInterval(runningTime);
-    isPaused = true;
-  }
   runningTime = setInterval(() => {
+    if (newTimeInSec === 0) {
+      clearInterval(runningTime);
+      isPaused = true;
+    }
     isPaused = false;
     newTimeInSec = newTimeInSec - 1000;
     const min = Math.floor(newTimeInSec / 60000);
@@ -36,7 +36,7 @@ const setTimer = (timeToCount) => {
 };
 
 const changeActiveStatus = () => {
-  if (isPaused) {
+  if (isPaused === false) {
     document.querySelector("#start > p").textContent = "Pause";
     document.querySelector("#start > i").classList.remove("bi-play-fill");
     document.querySelector("#start > i").classList.add("bi-pause-fill");
@@ -55,7 +55,6 @@ const activeTimer = (minutes) => {
   console.log("activamos", isPaused);
   changeActiveStatus();
 
-  setTimer(timeToMills(minutes));
   // isPaused = false;
 };
 
@@ -64,12 +63,12 @@ const play = () => {
     setTimer(currentTime);
     console.log("play", isPaused);
     changeActiveStatus();
-    // isPaused = false;
+    isPaused = false;
   } else {
     clearInterval(runningTime);
     console.log("pausa");
     changeActiveStatus();
-    // isPaused = true;
+    isPaused = true;
   }
 };
 
