@@ -105,8 +105,5 @@ pomodoroBtn.addEventListener("click", () => activeTimer(25));
 shortBtn.addEventListener("click", () => activeTimer(5));
 longBtn.addEventListener("click", () => activeTimer(15));
 
-const testBtn = document.querySelector("#test");
-testBtn.addEventListener("click", () => activeTimer(0.0666667));
-
 playBtn.addEventListener("click", play);
 resetBtn.addEventListener("click", reset);
