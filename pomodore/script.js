@@ -11,8 +11,8 @@ const shortBtn = document.querySelector("#short_break");
 const longBtn = document.querySelector("#long_break");
 
 const sessionValue = document.querySelector("#session-value");
-const updateSessions = async () => {
-  const currentValue = await getSessions();
+const updateSessions = () => {
+  const currentValue = getSessions();
 
   const newCount = parseInt(currentValue) + 1;
 
@@ -21,8 +21,8 @@ const updateSessions = async () => {
   sessionValue.textContent = newCount;
 };
 
-const getSessions = async () => {
-  const sessions = (await localStorage.getItem("sessions")) || 0;
+const getSessions = () => {
+  const sessions = localStorage.getItem("sessions") || 0;
 
   sessionCounter = sessions;
   sessionValue.textContent = sessionCounter;
@@ -39,25 +39,29 @@ let currentTime = timeToMills(25);
 const setTimer = (timeToCount) => {
   isPaused = false;
 
-  let newTimeInSec = timeToCount;
+  const endTime = Date.now() + timeToCount;
+
   runningTime = setInterval(() => {
-    if (newTimeInSec < 1) {
-      timer.textContent = "00:00";
+    const remainingTime = Math.max(0, endTime - Date.now());
+
+    const totalSeconds = Math.ceil(remainingTime / 1000);
+
+    const min = Math.floor(totalSeconds / 60);
+    const sec = totalSeconds % 60;
+
+    timer.textContent =
+      String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+
+    currentTime = remainingTime;
+
+    if (remainingTime === 0) {
       clearInterval(runningTime);
       isPaused = true;
       changeActiveStatus();
       updateSessions();
-      return;
     }
-    isPaused = false;
-    newTimeInSec = newTimeInSec - 1000;
-    const min = Math.floor(newTimeInSec / 60000);
-    const sec = ((newTimeInSec % 60000) / 1000).toFixed(0);
+  }, 250);
 
-    timer.textContent =
-      String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
-    currentTime = newTimeInSec;
-  }, 1000);
   changeActiveStatus();
 };
 
