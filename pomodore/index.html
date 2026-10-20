@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Pomodoro Timer</h1>
+    <p>FOCUS. WORK. REST. REPEAT.</p>
+
+    <div class="timer">
+      <span id="timer">25:00</span>
+      <p>Focus Time</p>
+    </div>
+
+    <div class="controls">
+      <button id="pomodoro">
+        <i class="bi bi-alarm" aria-hidden="true"></i>
+        <p>Pomodoro</p>
+        <p>25:00</p>
+      </button>
+      <button id="short_break">
+        <i class="bi bi-cup-hot" aria-hidden="true"></i>
+        <p>Short Break</p>
+        <p>05:00</p>
+      </button>
+      <button id="long_break">
+        <i class="bi bi-suitcase" aria-hidden="true"></i>
+        <p>Long Break</p>
+        <p>15:00</p>
+      </button>
+    </div>
+
+    <div class="main-controls">
+      <button id="start">
+        <i class="bi bi-play-fill" aria-hidden="true"></i>
+        <p>Start</p>
+      </button>
+      <button id="reset">
+        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+        <p>Reset</p>
+      </button>
+    </div>
+
+    <div class="session-info">
+      <p id="session-count">Sessions: <span id="session-value">0</span></p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
