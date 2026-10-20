@@ -20,17 +20,17 @@
     </div>
 
     <div class="controls">
-      <button id="pomodoro">
+      <button id="pomodoro" onclick="activeTimer(25)">
         <i class="bi bi-alarm" aria-hidden="true"></i>
         <p>Pomodoro</p>
         <p>25:00</p>
       </button>
-      <button id="short_break">
+      <button id="short_break" onclick="activeTimer(5)">
         <i class="bi bi-cup-hot" aria-hidden="true"></i>
         <p>Short Break</p>
         <p>05:00</p>
       </button>
-      <button id="long_break">
+      <button id="long_break" onclick="activeTimer(15)">
         <i class="bi bi-suitcase" aria-hidden="true"></i>
         <p>Long Break</p>
         <p>15:00</p>
@@ -38,11 +38,11 @@
     </div>
 
     <div class="main-controls">
-      <button id="start">
+      <button id="start" onclick="play()">
         <i class="bi bi-play-fill" aria-hidden="true"></i>
         <p>Start</p>
       </button>
-      <button id="reset">
+      <button id="reset" onclick="reset()">
         <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
         <p>Reset</p>
       </button>
