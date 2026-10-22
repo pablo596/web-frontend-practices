@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  /* Backgrounds */
+  --color-bg: #0b0f19;
+  --color-surface: #111827;
+  --color-surface-hover: #1e293b;
+
+  /* Brand */
+  --color-primary: #5eead4;
+  --color-primary-text: #0b0f19;
+
+  /* Typography */
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+
+  /* Feedback */
+  --color-success: #34d399;
+  --color-warning: #f59e0b;
+  --color-danger: #fb7185;
+
+  /* Borders */
+  --color-border: #334155;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+}
+
+h1,
+p,
+span {
+  color: var(--color-text);
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  width: 25vw;
+  height: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 5px solid var(--color-border);
+}
+.timer > span {
+  font-size: 2rem;
+}
+.timer > p {
+  font-size: 0.5rem;
+}
+
+.controls,
+.main-controls {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0 1rem 0;
+}
+
+.controls > button {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.controls > button:active {
+  background-color: var(--color-surface-hover);
+}
+
+.main-controls > button {
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
